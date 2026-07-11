@@ -3,58 +3,65 @@
 {% block title %}Login — SecureBank{% endblock %}
 
 {% block content %}
-<div class="row justify-content-center mt-5">
-  <div class="col-12 col-sm-10 col-md-6 col-lg-5">
+<div class="sb-login-wrap">
+  <div class="sb-login-card">
 
-    <div class="card shadow-sm">
-      <div class="card-header bg-primary text-white text-center py-3">
-        <h4 class="mb-0">Sign In to Your Account</h4>
-      </div>
-      <div class="card-body p-4">
+    <!-- Logo -->
+    <div class="sb-login-logo"><i class="bi bi-bank2"></i> SecureBank</div>
+    <p class="sb-login-sub">Sign in to manage your account</p>
 
-        <form method="POST" action="{{ url_for('auth.login') }}" novalidate>
+    <!-- Card -->
+    <div class="sb-card p-4">
 
-          <!-- Username -->
-          <div class="mb-3">
-            <label for="username" class="form-label fw-semibold">Username</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              class="form-control"
-              placeholder="Enter your username"
-              required
-              autofocus
-            />
-          </div>
+      <form method="POST" action="{{ url_for('auth.login') }}" novalidate>
 
-          <!-- Password -->
-          <div class="mb-4">
-            <label for="password" class="form-label fw-semibold">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              class="form-control"
-              placeholder="Enter your password"
-              required
-            />
-          </div>
+        <!-- Username -->
+        <div class="mb-3">
+          <label for="username" class="sb-form-label">
+            <i class="bi bi-person me-1"></i>Username
+          </label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control sb-form-control"
+            placeholder="Enter your username"
+            required
+            autofocus
+          />
+        </div>
 
-          <div class="d-grid">
-            <button type="submit" class="btn btn-primary btn-lg">
-              Login
-            </button>
-          </div>
+        <!-- Password -->
+        <div class="mb-4">
+          <label for="password" class="sb-form-label">
+            <i class="bi bi-lock me-1"></i>Password
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control sb-form-control"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
 
-        </form>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-sb-primary btn-lg">
+            <i class="bi bi-arrow-right-circle me-2"></i>Sign In
+          </button>
+        </div>
 
-      </div><!-- /card-body -->
-    </div><!-- /card -->
+      </form>
 
-    <p class="text-center text-muted mt-3 small">
-      Demo accounts: <strong>alice</strong> / password123 &nbsp;|&nbsp;
-      <strong>bob</strong> / secret456
+    </div>
+
+    <!-- Demo hint -->
+    <p class="text-center text-muted-sb mt-3" style="font-size:0.8rem;">
+      <i class="bi bi-info-circle me-1"></i>
+      Demo: <strong class="text-white-soft">alice</strong> / password123
+      &nbsp;&middot;&nbsp;
+      <strong class="text-white-soft">bob</strong> / secret456
     </p>
 
   </div>

@@ -6,30 +6,41 @@
 <div class="row justify-content-center">
   <div class="col-12 col-md-8 col-lg-6">
 
-    <!-- Welcome heading -->
-    <h2 class="mb-4">Hello, {{ customer_name }}!</h2>
+    <!-- Welcome -->
+    <p class="sb-welcome mb-4">
+      Hello, <span>{{ customer_name }}</span>! <i class="bi bi-hand-wave" style="font-size:1.6rem;"></i>
+    </p>
 
     <!-- Balance card -->
-    <div class="card shadow-sm mb-4">
-      <div class="card-header bg-white">
-        <h5 class="mb-0 text-muted">Current Balance</h5>
-      </div>
-      <div class="card-body text-center py-4">
-        <p class="display-5 fw-bold text-success mb-1">
-          ${{ "%.2f"|format(balance) }}
-        </p>
-        <p class="text-muted small mb-0">Account Status: <span class="text-success fw-semibold">Active</span></p>
+    <div class="sb-balance-card">
+      <p class="text-muted-sb mb-1" style="font-size:0.82rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:600;">
+        <i class="bi bi-wallet2 me-1"></i>Current Balance
+      </p>
+      <div class="sb-balance">${{ "%.2f"|format(balance) }}</div>
+      <div class="sb-status-pill">
+        <span class="sb-status-dot"></span> Account Active
       </div>
     </div>
 
-    <!-- Action buttons -->
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-      <a href="{{ url_for('transactions.transactions') }}" class="btn btn-outline-success btn-lg px-4">
-        Deposit Funds
-      </a>
-      <a href="{{ url_for('transactions.transactions') }}" class="btn btn-outline-danger btn-lg px-4">
-        Withdraw Funds
-      </a>
+    <!-- Quick actions -->
+    <p class="text-muted-sb mb-3" style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.08em; font-weight:600;">
+      Quick Actions
+    </p>
+    <div class="row g-3">
+      <div class="col-6">
+        <a href="{{ url_for('transactions.transactions') }}" class="sb-card d-flex flex-column align-items-center justify-content-center p-4 text-decoration-none" style="min-height:130px;">
+          <i class="bi bi-plus-circle-fill mb-2" style="font-size:2rem; color:#34d399;"></i>
+          <span style="font-weight:700; color:#fff; font-size:0.95rem;">Deposit</span>
+          <span style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin-top:0.2rem;">Add funds</span>
+        </a>
+      </div>
+      <div class="col-6">
+        <a href="{{ url_for('transactions.transactions') }}" class="sb-card d-flex flex-column align-items-center justify-content-center p-4 text-decoration-none" style="min-height:130px;">
+          <i class="bi bi-dash-circle-fill mb-2" style="font-size:2rem; color:#f87171;"></i>
+          <span style="font-weight:700; color:#fff; font-size:0.95rem;">Withdraw</span>
+          <span style="font-size:0.75rem; color:rgba(255,255,255,0.45); margin-top:0.2rem;">Remove funds</span>
+        </a>
+      </div>
     </div>
 
   </div>
