@@ -1,0 +1,19 @@
+﻿# SQLite database file - auto-created on first run; do not commit
+BACKEND/bank.db
+
+# Python virtual environment
+BACKEND/venv/
+
+# Python bytecode caches
+__pycache__/
+*.pyc
+*.pyo
+
+# pytest cache
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store

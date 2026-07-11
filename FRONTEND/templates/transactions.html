@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}Transactions — SecureBank{% endblock %}
+
+{% block content %}
+
+<!-- Back to dashboard link -->
+<div class="mb-4">
+  <a href="{{ url_for('dashboard.dashboard') }}" class="btn btn-outline-secondary btn-sm">
+    &larr; Back to Dashboard
+  </a>
+</div>
+
+<h3 class="mb-4">Manage Funds</h3>
+
+<div class="row g-4">
+
+  <!-- ── Deposit card (left column) ─────────────────────────────────────── -->
+  <div class="col-12 col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-success bg-opacity-10">
+        <h5 class="mb-0 text-success">Deposit Funds</h5>
+      </div>
+      <div class="card-body">
+        <p class="text-muted small">Add money to your account.</p>
+        <form method="POST" action="{{ url_for('transactions.do_deposit') }}" novalidate>
+          <div class="mb-3">
+            <label for="deposit-amount" class="form-label fw-semibold">Amount ($)</label>
+            <input
+              type="number"
+              id="deposit-amount"
+              name="amount"
+              class="form-control"
+              placeholder="0.00"
+              min="0.01"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-success">
+              Deposit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Withdrawal card (right column) ─────────────────────────────────── -->
+  <div class="col-12 col-md-6">
+    <div class="card shadow-sm h-100">
+      <div class="card-header bg-danger bg-opacity-10">
+        <h5 class="mb-0 text-danger">Withdraw Funds</h5>
+      </div>
+      <div class="card-body">
+        <p class="text-muted small">Remove money from your account.</p>
+        <form method="POST" action="{{ url_for('transactions.do_withdraw') }}" novalidate>
+          <div class="mb-3">
+            <label for="withdraw-amount" class="form-label fw-semibold">Amount ($)</label>
+            <input
+              type="number"
+              id="withdraw-amount"
+              name="amount"
+              class="form-control"
+              placeholder="0.00"
+              min="0.01"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="d-grid">
+            <button type="submit" class="btn btn-danger">
+              Withdraw
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /row -->
+{% endblock %}

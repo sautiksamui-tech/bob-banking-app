@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard — SecureBank{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-12 col-md-8 col-lg-6">
+
+    <!-- Welcome heading -->
+    <h2 class="mb-4">Hello, {{ customer_name }}!</h2>
+
+    <!-- Balance card -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-header bg-white">
+        <h5 class="mb-0 text-muted">Current Balance</h5>
+      </div>
+      <div class="card-body text-center py-4">
+        <p class="display-5 fw-bold text-success mb-1">
+          ${{ "%.2f"|format(balance) }}
+        </p>
+        <p class="text-muted small mb-0">Account Status: <span class="text-success fw-semibold">Active</span></p>
+      </div>
+    </div>
+
+    <!-- Action buttons -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      <a href="{{ url_for('transactions.transactions') }}" class="btn btn-outline-success btn-lg px-4">
+        Deposit Funds
+      </a>
+      <a href="{{ url_for('transactions.transactions') }}" class="btn btn-outline-danger btn-lg px-4">
+        Withdraw Funds
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

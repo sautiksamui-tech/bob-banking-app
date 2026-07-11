@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Login — SecureBank{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+  <div class="col-12 col-sm-10 col-md-6 col-lg-5">
+
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white text-center py-3">
+        <h4 class="mb-0">Sign In to Your Account</h4>
+      </div>
+      <div class="card-body p-4">
+
+        <form method="POST" action="{{ url_for('auth.login') }}" novalidate>
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label for="username" class="form-label fw-semibold">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="Enter your username"
+              required
+              autofocus
+            />
+          </div>
+
+          <!-- Password -->
+          <div class="mb-4">
+            <label for="password" class="form-label fw-semibold">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <div class="d-grid">
+            <button type="submit" class="btn btn-primary btn-lg">
+              Login
+            </button>
+          </div>
+
+        </form>
+
+      </div><!-- /card-body -->
+    </div><!-- /card -->
+
+    <p class="text-center text-muted mt-3 small">
+      Demo accounts: <strong>alice</strong> / password123 &nbsp;|&nbsp;
+      <strong>bob</strong> / secret456
+    </p>
+
+  </div>
+</div>
+{% endblock %}
