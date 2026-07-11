@@ -18,6 +18,7 @@ from flask import (
 )
 
 from routes.utils import login_required
+from services.account_service import get_account
 from services.transaction_service import deposit, withdraw
 
 transaction_bp = Blueprint("transactions", __name__)
@@ -57,6 +58,19 @@ def do_withdraw():
     """
     customer_id = session["customer_id"]
     amount_str = request.form.get("amount", "")
+
+    if not amount_str:
+        flash("Amount is required", "danger")
+        return redirect(url_for("transactions.transactions"))
+
+    if float(amount_str) <= 0:
+        flash("Amount must be greater than zero", "danger")
+        return redirect(url_for("transactions.transactions"))
+
+    account = get_account(customer_id)
+    if float(amount_str) > account["balance"]:
+        flash("Insufficient funds", "danger")
+        return redirect(url_for("transactions.transactions"))
 
     success, message, _ = withdraw(customer_id, amount_str)
 
